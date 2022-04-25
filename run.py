@@ -9,20 +9,30 @@ def create_random_ship():
     return random.randint(0, 5), random.randint(0, 5)
 
 
+player = input('Please Enter Your Name: ')
+while not player.isalpha():
+    print('Invalid Entry, Try Again: ')
+    player = input('Please Enter Your Name: ')
+
+
 def play_again():
     '''
     Start a new game or exit the program
     '''
-    another_game = input("GAME OVER!\nPlay Again? <y>es or <n>o?: ").lower()
+    print('Game Over!')
+    another_game = input("\nPlay Again? <y>es or <n>o?: ").lower()
     if another_game == "y":
         play_game()
-    else:
-        print(f"Goodbye {player}!")
+    elif another_game == 'n':
+        print(f'Thanks for playing {player}')
         sys.exit()
+    elif another_game != 'y' or 'n':
+        print('Enter "y/Y" for yes or "n/N" for no')
+        play_again()
 
 
 print("Welcome to Battleships!")
-player = (input('Type your name?: '))
+
 print(f"""\n{player}, you have 15 missles and there are 3 ships on the map.
 In order to hit them, you have to enter specific numbers for that location.
 Example: For the first row and first column, you have to write 1 and 1.
